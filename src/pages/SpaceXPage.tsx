@@ -8,7 +8,6 @@ import SearchComponent from "../components/search";
 
 function SpaceXPage() {
   const dispatch = useAppDispatch();
-  const [data, setData] = useState([]);
   const [hasMore, setHasMore] = useState<boolean>(true);
 
   const { launches, loading } = useAppSelector(
@@ -24,7 +23,6 @@ function SpaceXPage() {
   useEffect(() => {
     getLaunchesHandler();
   }, [getLaunchesHandler]);
-  console.log(launches);
 
   // Detect when user is near the bottom
   useEffect(() => {

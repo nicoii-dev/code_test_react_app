@@ -26,7 +26,7 @@ function ViewSpaceXPage() {
   if (loading) {
     return <LoaderComponent />;
   }
-  console.log(launch?.links);
+
   return (
     <div>
       <div className="min-w-fit p-10 m-5 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
