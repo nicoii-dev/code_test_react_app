@@ -8,11 +8,12 @@ import SearchComponent from "../components/search";
 
 function SpaceXPage() {
   const dispatch = useAppDispatch();
+  const [data, setData] = useState([]);
+  const [hasMore, setHasMore] = useState<boolean>(true);
 
-  const {
-    launches,
-    loading,
-  } = useAppSelector((state: any) => state.spaceXLaunches);
+  const { launches, loading } = useAppSelector(
+    (state: any) => state.spaceXLaunches
+  );
   const [per_page, setPerPage] = useState<number>(10);
   const [search, setSearch] = useState<string>("");
 
@@ -23,14 +24,14 @@ function SpaceXPage() {
   useEffect(() => {
     getLaunchesHandler();
   }, [getLaunchesHandler]);
-
+  console.log(launches);
 
   // Detect when user is near the bottom
   useEffect(() => {
     const handleScroll = () => {
       if (
         window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 50
+        document.documentElement.scrollHeight - 30
       ) {
         if (!loading) {
           setPerPage((prev) => prev + 10);
@@ -58,6 +59,11 @@ function SpaceXPage() {
                 );
               })}
               {loading ? <LoaderComponent /> : null}
+              {!hasMore && (
+                <p style={{ textAlign: "center", color: "gray" }}>
+                  🎉 No more items to load!
+                </p>
+              )}
             </div>
           </div>
         ) : (

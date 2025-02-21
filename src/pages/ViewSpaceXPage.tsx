@@ -26,10 +26,11 @@ function ViewSpaceXPage() {
   if (loading) {
     return <LoaderComponent />;
   }
-  console.log(launch);
+  console.log(launch?.links);
   return (
     <div>
       <div className="min-w-fit p-10 m-5 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+        <img src={`${launch?.links?.mission_patch}`} alt={launch?.mission_name} />
         <div
           className={clsx(
             "capitalize border p-2 w-fit rounded-md text-white ",

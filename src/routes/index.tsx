@@ -8,7 +8,7 @@ export default function MainRoute() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<SpaceXPage />} />
-        <Route path="launches" element={<ViewSpaceXPage />} />
+        <Route path="launches" element={<SpaceXPage />} />
         <Route path="launches/:id" element={<ViewSpaceXPage />} />
         <Route path="404" element={<Page404 />} />
         <Route path="*" element={<Navigate to="/404" replace />} />

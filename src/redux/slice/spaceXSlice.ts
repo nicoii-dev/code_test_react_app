@@ -9,7 +9,7 @@ export interface PaginationInterface {
 
 const initialState = {
   launches: [],
-  perPage: 10,
+  hasMore: true,
   launch: null,
   loading: false,
   error: "",
@@ -24,11 +24,11 @@ export const getLaunches = createAsyncThunk(
 );
 
 export const viewLaunch = createAsyncThunk(
-  'viewLaunch',
+  "viewLaunch",
   async (flightId: string) => {
     const response = await getLaunch(flightId);
     return response;
-  },
+  }
 );
 
 const spaceXSlice = createSlice({
@@ -45,12 +45,6 @@ const spaceXSlice = createSlice({
       return {
         ...state,
         product: action.payload,
-      };
-    },
-    setPerPage: (state, action) => {
-      return {
-        ...state,
-        perPage: state.perPage + action.payload,
       };
     },
   },
@@ -85,5 +79,5 @@ const spaceXSlice = createSlice({
   },
 });
 
-export const { setSpaces, setSpace, setPerPage } = spaceXSlice.actions;
+export const { setSpaces, setSpace } = spaceXSlice.actions;
 export default spaceXSlice.reducer;
