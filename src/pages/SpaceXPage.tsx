@@ -32,8 +32,12 @@ function SpaceXPage() {
         document.documentElement.scrollHeight - 30
       ) {
         if (!loading) {
-          setPerPage((prev) => prev + 10);
-          getLaunchesHandler();
+          if(per_page !== launches.length + 10 && launches.length > 10) {
+            setHasMore(false)
+          } else {
+            setPerPage((prev) => prev + 10);
+            getLaunchesHandler();
+          }
         }
       }
     };
